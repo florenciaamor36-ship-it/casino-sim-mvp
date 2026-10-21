@@ -27,7 +27,6 @@ jobs:
         working-directory: slot-lab
       - run: npm run build
         working-directory: slot-lab
-      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: slot-lab/dist
