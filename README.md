@@ -1,6 +1,10 @@
 # Casino Sim MVP
 
+**Demo online:** https://casino-sim-mvp-preview.tiendasshoficial.workers.dev/
+
 Prototipo aislado de backend para casino **de simulación**, con créditos ficticios. No contiene juegos comerciales, arte ajeno, depósitos ni retiros.
+
+La preview web usa un Worker de Cloudflare y una KV separada; el backend local con SQLite es la variante de referencia. La KV de la preview no ofrece transacciones atómicas, por eso es solo para pruebas individuales y no para manejar saldos de producción.
 
 ## Ejecutar en local
 
