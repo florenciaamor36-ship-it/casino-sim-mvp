@@ -1,0 +1,11 @@
+{
+  "main_module": "worker.js",
+  "compatibility_date": "2026-10-21",
+  "bindings": [
+    {
+      "type": "kv_namespace",
+      "name": "CASINO_KV",
+      "namespace_id": "b3fee1c4f5ad4d0b9d7f79c9f795d674"
+    }
+  ]
+}
