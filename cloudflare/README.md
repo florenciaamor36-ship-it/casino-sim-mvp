@@ -4,4 +4,4 @@ El Worker sirve `public/index.html` desde KV y expone la API de demostración. E
 
 La variante local oficial sigue siendo `app.py` + SQLite; ejecutá sus pruebas con `python3 -m unittest discover -s tests -v`.
 
-El Worker se sube como módulo ES (`worker.js`) con `metadata.json` y la binding `CASINO_KV`. La UI se carga en la clave `ui:index.html`. El token de Cloudflare se mantiene fuera del repo y debe tener permisos de Workers Scripts y Workers KV.
+El Worker se sube como módulo ES (`worker.js`) con `metadata.json` y la binding `CASINO_KV`. La UI se carga en la clave `index.html`. El token de Cloudflare se mantiene fuera del repo y debe tener permisos de Workers Scripts y Workers KV.
