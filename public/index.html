@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100d20">
+  <title>Casino Lab · Demo técnica</title>
+  <style>
+    :root{color-scheme:dark;--bg:#100d20;--panel:#19152b;--panel2:#211b38;--line:#383050;--text:#f7f3ff;--muted:#aca4c2;--gold:#ffd66b;--violet:#a78bfa;--green:#67e8b5;--red:#fb7185}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#332452 0,transparent 48%),var(--bg);color:var(--text);font:15px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+    button{font:inherit;color:inherit;cursor:pointer}.wrap{max-width:1100px;margin:auto;padding:24px 20px 44px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid #ffffff14;padding-bottom:18px}.brand{display:flex;align-items:center;gap:12px}.mark{display:grid;place-items:center;width:42px;height:42px;border:1px solid #ffe18d80;border-radius:13px;color:var(--gold);font-size:21px;box-shadow:0 0 22px #ffc85720}.brand b{display:block;letter-spacing:.14em;font-size:13px}.brand small{color:var(--muted);font-size:12px}.balance{border:1px solid #ffe18d55;background:#ffd66b0d;border-radius:13px;padding:10px 15px;text-align:right}.balance span{display:block;font-size:10px;letter-spacing:.13em;color:var(--muted)}.balance strong{color:var(--gold);font-size:20px;font-variant-numeric:tabular-nums}
+    .intro{display:flex;justify-content:space-between;align-items:end;gap:20px;padding:32px 0 18px}.eyebrow{color:var(--violet);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.intro h1{font-size:clamp(25px,4vw,38px);line-height:1.1;margin:8px 0}.intro p{margin:0;color:var(--muted);max-width:630px}.badge{white-space:nowrap;border:1px solid #67e8b54c;color:var(--green);background:#67e8b50d;padding:7px 10px;border-radius:99px;font-size:11px;font-weight:700}
+    .grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,.8fr);gap:18px;margin-top:16px}.card{background:linear-gradient(145deg,#211b38,#171329);border:1px solid var(--line);border-radius:20px;box-shadow:0 18px 45px #05030b55}.machine{padding:24px}.machine-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.machine-head h2{font-size:17px;margin:0}.machine-head p{font-size:12px;color:var(--muted);margin:4px 0 0}.status{font-size:11px;color:var(--green);display:flex;align-items:center;gap:7px}.dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 10px var(--green)}
+    .reels{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px auto 15px;max-width:550px}.reel{height:118px;display:grid;place-items:center;border:1px solid #ffd66b55;border-radius:16px;background:linear-gradient(180deg,#090714,#241a38 48%,#0b0816);box-shadow:inset 0 0 30px #0008,0 0 18px #ffd66b12;color:var(--gold);font-size:clamp(23px,5vw,38px);font-weight:900;letter-spacing:.04em;text-shadow:0 2px 15px #ffd66b50;transition:transform .15s ease}.reel.spinning{filter:blur(2px);transform:scaleY(.96);color:#fff}.result{height:26px;text-align:center;color:var(--muted);font-size:13px;margin-bottom:16px}.result.win{color:var(--green);font-weight:800}.result.jackpot{color:var(--gold);font-weight:900;text-shadow:0 0 16px #ffd66b80}
+    .controls{max-width:550px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:16px}.bet-control label{display:block;color:var(--muted);font-size:10px;letter-spacing:.12em;margin-bottom:7px}.bet-row{display:flex;align-items:center;gap:8px}.bet-row button,.secondary{background:#ffffff0a;border:1px solid var(--line);border-radius:10px;padding:9px 12px}.bet-row button:hover,.secondary:hover{border-color:var(--violet)}.bet-value{min-width:80px;text-align:center;color:var(--gold);font-weight:800}.spin{border:0;border-radius:12px;padding:13px 27px;color:#171020;font-size:14px;font-weight:900;letter-spacing:.08em;background:linear-gradient(135deg,#ffe699,#f5b83b);box-shadow:0 8px 24px #f7c55030}.spin:hover{filter:brightness(1.08);transform:translateY(-1px)}.spin:disabled,button:disabled{opacity:.55;cursor:not-allowed;transform:none}.notice{margin:20px auto 0;max-width:550px;border-top:1px solid #ffffff12;padding-top:14px;color:var(--muted);font-size:11px;text-align:center}
+    .side{padding:20px}.side h2{font-size:15px;margin:0 0 4px}.side .sub{font-size:12px;color:var(--muted);margin:0 0 15px}.history{display:flex;flex-direction:column;gap:9px;max-height:365px;overflow:auto}.empty{border:1px dashed #ffffff24;border-radius:12px;padding:18px;color:var(--muted);text-align:center;font-size:12px}.round{display:grid;grid-template-columns:1fr auto;gap:5px 10px;border:1px solid #ffffff12;background:#ffffff05;border-radius:12px;padding:10px 11px}.round .symbols{font-weight:800;letter-spacing:.08em}.round small{color:var(--muted);font-size:10px}.round .gain{color:var(--green);font-weight:800;text-align:right}.round .loss{color:var(--muted);text-align:right}.side-foot{border-top:1px solid #ffffff12;margin-top:16px;padding-top:14px;display:flex;justify-content:space-between;align-items:center;gap:10px}.side-foot small{color:var(--muted);font-size:10px}.secondary{font-size:11px;padding:8px 10px}
+    .architecture{margin-top:18px;padding:19px 21px}.architecture h2{font-size:14px;margin:0 0 12px}.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.step{border:1px solid #ffffff13;border-radius:12px;padding:12px;background:#ffffff04}.step b{display:block;color:var(--gold);font-size:11px;margin-bottom:4px}.step span{display:block;color:var(--muted);font-size:11px}.footer{color:#817995;font-size:10px;text-align:center;margin-top:22px}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;pointer-events:none;border:1px solid #fb718555;background:#24131f;color:#ffdce3;border-radius:12px;padding:11px 15px;font-size:12px;transition:.2s;max-width:calc(100vw - 30px)}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:760px){.wrap{padding:16px 13px 30px}.top{align-items:flex-start}.intro{display:block;padding-top:25px}.badge{display:inline-block;margin-top:13px}.grid{grid-template-columns:1fr}.machine{padding:18px}.reel{height:95px}.flow{grid-template-columns:repeat(2,1fr)}.controls{align-items:end}.spin{padding:12px 18px}.balance{padding:8px 10px}.balance strong{font-size:17px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div class="brand"><div class="mark">♛</div><div><b>CASINO LAB</b><small>prototipo de backend</small></div></div>
+      <div class="balance"><span>CRÉDITOS VIRTUALES</span><strong id="balance">—</strong></div>
+    </header>
+    <section class="intro">
+      <div><div class="eyebrow">Demo funcional · entorno aislado</div><h1>Una base común para tus máquinas</h1><p>El servidor valida la apuesta, genera el resultado y actualiza el saldo. La interfaz solamente muestra y anima la respuesta.</p></div>
+      <div class="badge">● SIMULACIÓN · SIN DINERO REAL</div>
+    </section>
+    <section class="grid">
+      <article class="card machine">
+        <div class="machine-head"><div><h2>Slot Engine · prueba técnica</h2><p>Resultado generado por el servidor</p></div><div class="status"><i class="dot"></i><span id="apiStatus">Conectando…</span></div></div>
+        <div class="reels" aria-label="Resultado del giro"><div class="reel">7</div><div class="reel">GEM</div><div class="reel">STAR</div></div>
+        <div class="result" id="result">Elegí una apuesta y probá un giro.</div>
+        <div class="controls">
+          <div class="bet-control"><label>APUESTA · CRÉDITOS</label><div class="bet-row"><button id="betDown" aria-label="Bajar apuesta">−</button><span class="bet-value" id="betValue">100</span><button id="betUp" aria-label="Subir apuesta">+</button></div></div>
+          <button class="spin" id="spinButton">GIRAR</button>
+        </div>
+        <div class="notice">Los símbolos son de prueba; esta pantalla no contiene el arte final de tus tragamonedas. Las animaciones no alteran el resultado del servidor.</div>
+      </article>
+      <aside class="card side">
+        <h2>Últimos giros</h2><p class="sub">Registro enviado por la API</p>
+        <div class="history" id="history"><div class="empty">Cargando historial…</div></div>
+        <div class="side-foot"><small>Jugador de prueba · demo</small><button class="secondary" id="resetButton">Restablecer créditos</button></div>
+      </aside>
+    </section>
+    <section class="card architecture">
+      <h2>Flujo de esta demo</h2>
+      <div class="flow">
+        <div class="step"><b>1 · APUESTA</b><span>El cliente manda importe e identificador único.</span></div>
+        <div class="step"><b>2 · VALIDACIÓN</b><span>La API comprueba límites y saldo.</span></div>
+        <div class="step"><b>3 · REGISTRO</b><span>Guarda giro y movimientos en SQLite.</span></div>
+        <div class="step"><b>4 · RESPUESTA</b><span>La interfaz anima el resultado recibido.</span></div>
+      </div>
+    </section>
+    <div class="footer">MVP técnico · créditos ficticios · RNG y premios no certificados · no apto para producción ni apuestas con dinero real</div>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+<script>
+(() => {
+  const symbols = ["7", "BAR", "GEM", "STAR", "MOON"];
+  const balanceEl = document.getElementById("balance");
+  const statusEl = document.getElementById("apiStatus");
+  const resultEl = document.getElementById("result");
+  const betEl = document.getElementById("betValue");
+  const historyEl = document.getElementById("history");
+  const spinButton = document.getElementById("spinButton");
+  const reels = [...document.querySelectorAll(".reel")];
+  let bet = 100;
+  let busy = false;
+
+  const fmt = n => new Intl.NumberFormat("es-AR").format(n);
+  const toast = message => {
+    const el = document.getElementById("toast"); el.textContent = message; el.classList.add("show");
+    setTimeout(() => el.classList.remove("show"), 2600);
+  };
+  function renderHistory(items) {
+    historyEl.replaceChildren();
+    if (!items.length) {
+      const empty = document.createElement("div"); empty.className = "empty"; empty.textContent = "Todavía no hay giros. Hacé el primero."; historyEl.append(empty); return;
+    }
+    for (const item of items) {
+      const row = document.createElement("div"); row.className = "round";
+      const symbolsNode = document.createElement("span"); symbolsNode.className = "symbols"; symbolsNode.textContent = item.symbols.join(" · ");
+      const gain = document.createElement("span"); gain.className = item.win ? "gain" : "loss"; gain.textContent = item.win ? `+${fmt(item.win)}` : "—";
+      const betNode = document.createElement("small"); betNode.textContent = `Apuesta ${fmt(item.bet)} · saldo ${fmt(item.balance)}`;
+      const time = document.createElement("small"); time.textContent = new Date(item.createdAt).toLocaleTimeString("es-AR", {hour:"2-digit",minute:"2-digit"}); time.style.textAlign = "right";
+      row.append(symbolsNode, gain, betNode, time); historyEl.append(row);
+    }
+  }
+  async function refresh() {
+    const r = await fetch("/api/state", {cache:"no-store"});
+    if (!r.ok) throw new Error("No se pudo leer el estado");
+    const data = await r.json(); balanceEl.textContent = fmt(data.player.balance); renderHistory(data.history);
+    statusEl.textContent = "API conectada";
+  }
+  document.getElementById("betDown").addEventListener("click", () => { if (!busy) { bet = Math.max(10, bet - 10); betEl.textContent = fmt(bet); } });
+  document.getElementById("betUp").addEventListener("click", () => { if (!busy) { bet = Math.min(1000, bet + 10); betEl.textContent = fmt(bet); } });
+  spinButton.addEventListener("click", async () => {
+    if (busy) return;
+    busy = true; spinButton.disabled = true; resultEl.className = "result"; resultEl.textContent = "El servidor está procesando el giro…";
+    reels.forEach(el => el.classList.add("spinning"));
+    const timer = setInterval(() => reels.forEach(el => el.textContent = symbols[Math.floor(Math.random() * symbols.length)]), 80);
+    try {
+      const response = await fetch("/api/spin", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({requestId:crypto.randomUUID(), bet})});
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "No se pudo completar el giro");
+      clearInterval(timer); reels.forEach((el,i) => { el.textContent = data.symbols[i]; el.classList.remove("spinning"); });
+      balanceEl.textContent = fmt(data.balance);
+      if (data.outcome === "jackpot") { resultEl.className = "result jackpot"; resultEl.textContent = `¡JACKPOT! Ganaste ${fmt(data.win)} créditos`; }
+      else if (data.win) { resultEl.className = "result win"; resultEl.textContent = `Premio: ${fmt(data.win)} créditos`; }
+      else { resultEl.className = "result"; resultEl.textContent = `Sin premio · se descontaron ${fmt(data.bet)} créditos`; }
+      await refresh();
+    } catch (error) {
+      clearInterval(timer); reels.forEach(el => el.classList.remove("spinning")); resultEl.textContent = error.message; toast(error.message);
+    } finally { busy = false; spinButton.disabled = false; }
+  });
+  document.getElementById("resetButton").addEventListener("click", async () => {
+    if (busy) return;
+    try { await fetch("/api/demo/reset", {method:"POST", headers:{"Content-Type":"application/json"}, body:"{}"}); await refresh(); resultEl.className="result"; resultEl.textContent="Créditos de demostración restablecidos."; }
+    catch (error) { toast("No pude restablecer la demo."); }
+  });
+  refresh().catch(() => { statusEl.textContent = "API sin conexión"; toast("No se pudo conectar con el servidor."); });
+})();
+</script>
+</body>
+</html>
