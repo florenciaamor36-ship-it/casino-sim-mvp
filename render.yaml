@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: casino-sim-mvp
+    runtime: python
+    plan: free
+    buildCommand: python -m compileall -q app.py tests
+    startCommand: python app.py
+    healthCheckPath: /api/health
+    autoDeploy: true
