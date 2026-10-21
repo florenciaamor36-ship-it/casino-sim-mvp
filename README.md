@@ -44,3 +44,10 @@ Apuestas permitidas: 10 a 1.000 créditos, en saltos de 10.
 Esto es una **demo técnica**, no una plataforma de casino lista para producción. La cuenta `demo` es única y no hay autenticación real; la tabla de pagos y probabilidades son ilustrativas y no están certificadas. No usar con dinero real, pagos, datos personales ni como sistema de cuentas de clientes. Para el producto habría que añadir autenticación, autorización de administración, límites, monitoreo, pruebas de concurrencia, copias de seguridad y revisión legal/de seguridad.
 
 La interfaz usa símbolos tipográficos únicamente para probar el flujo; no reemplaza el arte ni las animaciones de tus máquinas.
+
+
+## Integración aislada de Slot Lab
+
+`slot-lab/` es una copia para pruebas del demo de 21 skins. El repositorio original queda intacto. La demo usa el mismo Worker de créditos virtuales y la página se construye con GitHub Actions.
+
+**Importante:** es una prueba técnica sin usuarios registrados ni dinero real. El backend de preview recibe la configuración de la skin desde el cliente; no es una arquitectura de producción.
