@@ -50,7 +50,7 @@ async function writeState(env, id, state) {
 }
 
 async function indexResponse(env) {
-  const html = await env.CASINO_KV.get("ui:index.html");
+  const html = await env.CASINO_KV.get("index.html");
   if (!html) return new Response("Demo UI not uploaded", { status: 503 });
   return new Response(html, {
     headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff" },
